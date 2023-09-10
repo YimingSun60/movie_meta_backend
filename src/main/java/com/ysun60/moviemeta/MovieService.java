@@ -19,7 +19,7 @@ public class MovieService {
         return movieRepo.findById(id);
     }*/
     public  Optional<MovieData> findMovie(String Title){
-        System.out.println(Title);
+        //System.out.println(Title);
         return movieRepo.findMovieDataBytitle(Title);
     }
 }
