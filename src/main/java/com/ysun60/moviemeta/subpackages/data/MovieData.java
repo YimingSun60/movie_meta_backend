@@ -1,4 +1,4 @@
-package com.ysun60.moviemeta;
+package com.ysun60.moviemeta.subpackages.data;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 //collection name should match the actual mongodata collection name
 @Document(collection = "movies")
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class MovieData {
     @Id
