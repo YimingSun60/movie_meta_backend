@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.List;
 
 //collection name should match the actual mongodata collection name
-@Document(collection = "movies")
+@Document(collection = "movie")
 @Data
 //@AllArgsConstructor
 @NoArgsConstructor
