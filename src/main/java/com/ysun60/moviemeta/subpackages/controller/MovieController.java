@@ -3,11 +3,14 @@ package com.ysun60.moviemeta.subpackages.controller;
 import com.ysun60.moviemeta.subpackages.data.MovieData;
 import com.ysun60.moviemeta.subpackages.repository.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -38,6 +41,11 @@ public class MovieController {
     @GetMapping("/root")
     public ResponseEntity<List<MovieData>> FindAllMovies(){
         return new ResponseEntity<>(movieRepo.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/home")
+    public ResponseEntity<List<MovieData>> FindAmountofMovies(){
+        return new ResponseEntity<>(movieRepo.findAll(PageRequest.of(0,5)).getContent(), HttpStatus.OK);
     }
 
 }
