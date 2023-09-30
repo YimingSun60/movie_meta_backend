@@ -1,19 +1,16 @@
 package com.ysun60.moviemeta.subpackages.controller;
 
-import com.ysun60.moviemeta.subpackages.data.MovieData;
-import com.ysun60.moviemeta.subpackages.data.User;
-import com.ysun60.moviemeta.subpackages.repository.MovieRepo;
+import com.ysun60.moviemeta.subpackages.Entity.MovieData;
+import com.ysun60.moviemeta.subpackages.Entity.User;
+import com.ysun60.moviemeta.subpackages.dto.UserDTO;
 import com.ysun60.moviemeta.subpackages.service.MovieService;
 import com.ysun60.moviemeta.subpackages.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -53,8 +50,8 @@ public class MovieController {
     }
 
     @GetMapping("/user/login")
-    public ResponseEntity<User> findUserByUserName(@RequestParam String username) {
-        User user = userService.findUserByUserName(username);
+    public ResponseEntity<UserDTO> findUserByUserName(@RequestParam String username) {
+        UserDTO user = userService.findUserByUserName(username);
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

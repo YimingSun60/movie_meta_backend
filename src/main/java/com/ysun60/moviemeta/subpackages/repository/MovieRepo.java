@@ -1,11 +1,10 @@
 package com.ysun60.moviemeta.subpackages.repository;
 
-import com.ysun60.moviemeta.subpackages.data.MovieData;
+import com.ysun60.moviemeta.subpackages.Entity.MovieData;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository

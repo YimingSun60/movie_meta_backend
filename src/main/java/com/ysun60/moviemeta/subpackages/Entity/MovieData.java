@@ -1,5 +1,4 @@
-package com.ysun60.moviemeta.subpackages.data;
-import lombok.AllArgsConstructor;
+package com.ysun60.moviemeta.subpackages.Entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;

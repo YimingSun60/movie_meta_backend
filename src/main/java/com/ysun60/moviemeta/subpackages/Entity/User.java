@@ -1,10 +1,11 @@
-package com.ysun60.moviemeta.subpackages.data;
+package com.ysun60.moviemeta.subpackages.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User {
@@ -13,12 +14,10 @@ public class User {
     private long id;
 
 
-    @Getter
-    @Setter
+    @Column(nullable = false, unique = true)
     private String username;
 
 
-    @Getter
-    @Setter
+    @Column(nullable = false)
     private String password;
 }
