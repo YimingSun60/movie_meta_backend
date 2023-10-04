@@ -33,7 +33,7 @@ public class MovieController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/search")
+    @GetMapping("/public/search")
     public ResponseEntity<List<MovieData>> findMovieByTitle(@RequestParam String title) {
         List<MovieData> movies = movieService.findMovieByTitle(title);
 //        System.out.println("Movie: " + movies);
@@ -43,26 +43,39 @@ public class MovieController {
         return new ResponseEntity<>(movies, HttpStatus.OK);
     }
 
+    @GetMapping("/public/movie/{id}")
+    public ResponseEntity<MovieData>findMovieById(@PathVariable String id) {
+        MovieData movie = movieService.findMovieById(id);
+        if (movie == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(movie, HttpStatus.OK);
+    }
 
-    @GetMapping("/root")
+    @GetMapping("/public/home")
     public ResponseEntity<List<MovieData>> FindAllMovies() {
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
     }
 
-    @GetMapping("/user/login")
-    public ResponseEntity<UserDTO> findUserByUserName(@RequestParam String username) {
-        UserDTO user = userService.findUserByUserName(username);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(user, HttpStatus.OK);
-    }
-    @PostMapping("/user/signup")
-    public ResponseEntity<User> createUser(@RequestParam String username, @RequestParam String password) {
-        User user = userService.createUser(username, password);
-        if (user == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(user, HttpStatus.OK);
+//    @GetMapping("/public/user/login")
+//    public ResponseEntity<UserDTO> findUserByUserName(@RequestParam String username, @RequestParam String password) {
+//        UserDTO user = userService.findUserByUserName(username,password);
+//        if (user == null ) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
+//    @PostMapping("/public/signup")
+//    public ResponseEntity<User> createUser(@RequestParam String username, @RequestParam String password) {
+//        User user = userService.createUser(username, password);
+//        if (user == null) {
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
+
+    @PostMapping("/public/test")
+    public ResponseEntity<String> test() {
+        return new ResponseEntity<>("hello world", HttpStatus.OK);
     }
 }

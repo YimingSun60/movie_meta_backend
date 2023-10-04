@@ -12,4 +12,6 @@ public interface MovieRepo extends MongoRepository<MovieData, ObjectId> {
     //public Optional<MovieData> findMovieDataByTitle(String Title);
     public List<MovieData> findMovieDataBytitleContainingIgnoreCase(String title);
     //public List<MovieData> findAll(Pageable pageable);
+
+    public MovieData findMovieDataById(String id);
 }

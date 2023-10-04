@@ -27,11 +27,15 @@ public class UserService {
         return userDTO;
     }
 
-    public UserDTO findUserByUserName(String username) {
+    public UserDTO findUserByUserName(String username, String password) {
         User user = userRepo.findUserByUsername(username);
+        if(!user.getPassword().equals(password)) {
+            return null;
+        }
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setUserName(user.getUsername());
+
         return userDTO;
     }
 }
