@@ -1,7 +1,7 @@
 package com.ysun60.moviemeta.subpackages.controller;
 
 import com.ysun60.moviemeta.subpackages.repository.MovieRepo;
-import com.ysun60.moviemeta.subpackages.Entity.MovieData;
+import com.ysun60.moviemeta.subpackages.Entity.Movie;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ class MovieControllerTest {
 
     @Test
     void findMovieByTitle() throws Exception {
-        when(movieRepo.findMovieDataBytitleContainingIgnoreCase(anyString())).thenReturn(Collections.singletonList(new MovieData()));
+        when(movieRepo.findMovieDataBytitleContainingIgnoreCase(anyString())).thenReturn(Collections.singletonList(new Movie()));
 
         mockMvc.perform(get("/search?title=TestTitle"))
                 .andExpect(status().isOk());

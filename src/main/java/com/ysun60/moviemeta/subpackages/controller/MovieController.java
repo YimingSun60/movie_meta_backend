@@ -1,8 +1,6 @@
 package com.ysun60.moviemeta.subpackages.controller;
 
-import com.ysun60.moviemeta.subpackages.Entity.MovieData;
-import com.ysun60.moviemeta.subpackages.Entity.User;
-import com.ysun60.moviemeta.subpackages.dto.UserDTO;
+import com.ysun60.moviemeta.subpackages.Entity.Movie;
 import com.ysun60.moviemeta.subpackages.service.MovieService;
 import com.ysun60.moviemeta.subpackages.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +32,8 @@ public class MovieController {
     private UserService userService;
 
     @GetMapping("/public/search")
-    public ResponseEntity<List<MovieData>> findMovieByTitle(@RequestParam String title) {
-        List<MovieData> movies = movieService.findMovieByTitle(title);
+    public ResponseEntity<List<Movie>> findMovieByTitle(@RequestParam String title) {
+        List<Movie> movies = movieService.findMovieByTitle(title);
 //        System.out.println("Movie: " + movies);
         if (movies == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -44,8 +42,8 @@ public class MovieController {
     }
 
     @GetMapping("/public/movie/{id}")
-    public ResponseEntity<MovieData>findMovieById(@PathVariable String id) {
-        MovieData movie = movieService.findMovieById(id);
+    public ResponseEntity<Movie>findMovieById(@PathVariable String id) {
+        Movie movie = movieService.findMovieById(id);
         if (movie == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -53,7 +51,7 @@ public class MovieController {
     }
 
     @GetMapping("/public/home")
-    public ResponseEntity<List<MovieData>> FindAllMovies() {
+    public ResponseEntity<List<Movie>> FindAllMovies() {
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
     }
 

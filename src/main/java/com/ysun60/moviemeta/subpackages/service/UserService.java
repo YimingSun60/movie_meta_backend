@@ -1,7 +1,7 @@
 package com.ysun60.moviemeta.subpackages.service;
 
 import com.ysun60.moviemeta.subpackages.Entity.User;
-import com.ysun60.moviemeta.subpackages.dto.UserDTO;
+import com.ysun60.moviemeta.subpackages.dto.LoginDTO;
 import com.ysun60.moviemeta.subpackages.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,23 +19,23 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public UserDTO findUserById(long id) {
+    public LoginDTO findUserById(long id) {
         User user = userRepo.findById(id).orElse(null);
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setUserName(user.getUsername());
-        return userDTO;
+        LoginDTO loginDTO = new LoginDTO();
+        loginDTO.setId(user.getId());
+        loginDTO.setUsername(user.getUsername());
+        return loginDTO;
     }
 
-    public UserDTO findUserByUserName(String username, String password) {
+    public LoginDTO findUserByUserName(String username, String password) {
         User user = userRepo.findUserByUsername(username);
         if(!user.getPassword().equals(password)) {
             return null;
         }
-        UserDTO userDTO = new UserDTO();
-        userDTO.setId(user.getId());
-        userDTO.setUserName(user.getUsername());
+        LoginDTO loginDTO = new LoginDTO();
+        loginDTO.setId(user.getId());
+        loginDTO.setUsername(user.getUsername());
 
-        return userDTO;
+        return loginDTO;
     }
 }

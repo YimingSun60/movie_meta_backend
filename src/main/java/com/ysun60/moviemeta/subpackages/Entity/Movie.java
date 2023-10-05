@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 //@AllArgsConstructor
 @NoArgsConstructor
-public class MovieData {
+public class Movie {
     @Id
     private ObjectId id;
     private String title;
