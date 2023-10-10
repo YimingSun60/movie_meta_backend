@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Movie {
     @Id
-    private ObjectId id;
+    private String id;
     private String title;
     private Integer year;
     private List<String> cast;
