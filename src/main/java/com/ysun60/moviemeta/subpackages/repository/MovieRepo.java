@@ -1,12 +1,11 @@
 package com.ysun60.moviemeta.subpackages.repository;
 
-import com.ysun60.moviemeta.subpackages.Entity.Movie;
+import com.ysun60.moviemeta.subpackages.entity.Movie;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface MovieRepo extends MongoRepository<Movie, ObjectId> {

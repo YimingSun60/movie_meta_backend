@@ -1,6 +1,6 @@
 package com.ysun60.moviemeta.subpackages.service;
 
-import com.ysun60.moviemeta.subpackages.Entity.User;
+import com.ysun60.moviemeta.subpackages.entity.User;
 import com.ysun60.moviemeta.subpackages.dto.LoginDTO;
 import com.ysun60.moviemeta.subpackages.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;

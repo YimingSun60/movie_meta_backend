@@ -1,8 +1,7 @@
 package com.ysun60.moviemeta.subpackages.security;
 
-import com.ysun60.moviemeta.subpackages.Entity.Role;
-import com.ysun60.moviemeta.subpackages.Entity.User;
-import com.ysun60.moviemeta.subpackages.repository.RoleRepo;
+import com.ysun60.moviemeta.subpackages.entity.Role;
+import com.ysun60.moviemeta.subpackages.entity.User;
 import com.ysun60.moviemeta.subpackages.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

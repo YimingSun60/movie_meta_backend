@@ -1,7 +1,7 @@
 package com.ysun60.moviemeta.subpackages.controller;
 
 import com.ysun60.moviemeta.subpackages.repository.MovieRepo;
-import com.ysun60.moviemeta.subpackages.Entity.Movie;
+import com.ysun60.moviemeta.subpackages.entity.Movie;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

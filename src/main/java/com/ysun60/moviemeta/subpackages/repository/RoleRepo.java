@@ -1,6 +1,6 @@
 package com.ysun60.moviemeta.subpackages.repository;
 
-import com.ysun60.moviemeta.subpackages.Entity.Role;
+import com.ysun60.moviemeta.subpackages.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepo extends JpaRepository<Role, Long> {

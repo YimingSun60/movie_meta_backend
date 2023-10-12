@@ -1,6 +1,6 @@
 package com.ysun60.moviemeta.subpackages.controller;
 
-import com.ysun60.moviemeta.subpackages.Entity.Movie;
+import com.ysun60.moviemeta.subpackages.entity.Movie;
 import com.ysun60.moviemeta.subpackages.service.MovieService;
 import com.ysun60.moviemeta.subpackages.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

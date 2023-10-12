@@ -1,4 +1,4 @@
-package com.ysun60.moviemeta.subpackages.Entity;
+package com.ysun60.moviemeta.subpackages.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
