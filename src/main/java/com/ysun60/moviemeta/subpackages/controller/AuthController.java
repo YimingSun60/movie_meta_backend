@@ -5,6 +5,7 @@ import com.ysun60.moviemeta.subpackages.Entity.User;
 import com.ysun60.moviemeta.subpackages.dto.AuthResponseDTO;
 import com.ysun60.moviemeta.subpackages.dto.LoginDTO;
 import com.ysun60.moviemeta.subpackages.dto.RegisterDTO;
+import com.ysun60.moviemeta.subpackages.dto.TokenDTO;
 import com.ysun60.moviemeta.subpackages.repository.RoleRepo;
 import com.ysun60.moviemeta.subpackages.repository.UserRepo;
 import com.ysun60.moviemeta.subpackages.security.JWTGenerator;
@@ -18,10 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 
@@ -72,6 +70,11 @@ public class AuthController {
         return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
     }
 
+    @PostMapping("validate")
+    public ResponseEntity<Boolean> validate(@RequestBody TokenDTO tokenDTO) {
+        System.out.println("token: " + tokenDTO.getToken());
+        return new ResponseEntity<>(jwtGenerator.validateToken(tokenDTO.getToken()), HttpStatus.OK);
+    }
 
 
 

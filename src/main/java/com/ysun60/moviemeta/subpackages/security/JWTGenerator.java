@@ -53,7 +53,8 @@ public class JWTGenerator {
                     .parseClaimsJws(token);
             return true;
         }catch(Exception e){
-            throw new AuthenticationCredentialsNotFoundException("Invalid token");
+            e.printStackTrace();e.printStackTrace();
+            return false;
         }
     }
 }
