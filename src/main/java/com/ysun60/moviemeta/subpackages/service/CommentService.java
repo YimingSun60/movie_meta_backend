@@ -2,6 +2,7 @@ package com.ysun60.moviemeta.subpackages.service;
 
 
 import com.ysun60.moviemeta.subpackages.entity.Comment;
+import com.ysun60.moviemeta.subpackages.entity.User;
 import com.ysun60.moviemeta.subpackages.model.CommentModel;
 import com.ysun60.moviemeta.subpackages.repository.CommentRepo;
 import com.ysun60.moviemeta.subpackages.repository.MovieRepo;
@@ -20,10 +21,10 @@ public class CommentService {
 
     Comment comment = new Comment();
 
-    public void addComment(String _comment, String _username, String _movieid){
+    public void addComment(String _comment, Long _userid, String _movieid){
      comment.setComment(_comment);
-     comment.setUserid(userRepo.findUserByUsername(_username).getId());
-     comment.setMovieid(_movieid);
+     comment.setUser(userRepo.findUserById(_userid));
+     comment.setMovie(movieRepo.findMovieById(_movieid));
      commentRepo.save(comment);
     }
 

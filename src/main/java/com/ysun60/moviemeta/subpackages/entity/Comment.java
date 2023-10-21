@@ -1,7 +1,6 @@
 package com.ysun60.moviemeta.subpackages.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,6 +14,12 @@ public class Comment {
     @Id
     private String id;
     private String comment;
-    private Long userid;
-    private String movieid;
+
+    @ManyToOne
+    @JoinTable(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinTable(name = "movie_id")
+    private Movie movie;
 }

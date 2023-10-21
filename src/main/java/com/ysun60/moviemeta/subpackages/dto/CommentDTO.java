@@ -15,5 +15,5 @@ public class CommentDTO {
     private String movieId;
 
     @NotEmpty
-    private String username;
+    private Long userId;
 }

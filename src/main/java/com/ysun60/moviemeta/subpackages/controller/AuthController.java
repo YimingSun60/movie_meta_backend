@@ -1,5 +1,4 @@
 package com.ysun60.moviemeta.subpackages.controller;
-
 import com.ysun60.moviemeta.subpackages.entity.Role;
 import com.ysun60.moviemeta.subpackages.entity.User;
 import com.ysun60.moviemeta.subpackages.dto.AuthResponseDTO;
@@ -66,7 +65,8 @@ public class AuthController {
                         loginDTO.getUsername(), loginDTO.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String token = jwtGenerator.generateToken(authentication);
-        return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
+        Long id = userRepo.findUserByUsername(loginDTO.getUsername()).getId();
+        return new ResponseEntity<>(new AuthResponseDTO(token, id), HttpStatus.OK);
     }
 
     @PostMapping("validate")
