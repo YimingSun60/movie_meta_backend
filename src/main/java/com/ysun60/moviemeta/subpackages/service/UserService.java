@@ -1,5 +1,6 @@
 package com.ysun60.moviemeta.subpackages.service;
 
+import com.ysun60.moviemeta.subpackages.dto.UserDTO;
 import com.ysun60.moviemeta.subpackages.entity.User;
 import com.ysun60.moviemeta.subpackages.dto.LoginDTO;
 import com.ysun60.moviemeta.subpackages.repository.UserRepo;
@@ -37,5 +38,15 @@ public class UserService {
         loginDTO.setUsername(user.getUsername());
 
         return loginDTO;
+    }
+    public UserDTO findUserDTOById(long id) {
+        User user = userRepo.findUserById(id);
+        if(user == null){
+            System.out.println("User not found");
+        }
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(user.getId());
+        userDTO.setUsername(user.getUsername());
+        return userDTO;
     }
 }

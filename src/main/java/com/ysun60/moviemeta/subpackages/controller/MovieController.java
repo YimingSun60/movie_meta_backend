@@ -42,19 +42,19 @@ public class MovieController {
     }
 
     @GetMapping("/public/movie/{id}")
-    public ResponseEntity<List<Movie>>findMovieById(@PathVariable String id) {
-        List<Movie> movies = movieService.findMovieById(id);
+    public ResponseEntity<Movie>findMovieById(@PathVariable String id) {
+        Movie movie = movieService.findMovieById(id);
 
-        if (movies == null) {
+        if (movie == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(movies, HttpStatus.OK);
+        return new ResponseEntity<>(movie, HttpStatus.OK);
     }
 
     @GetMapping("/public/home")
     public ResponseEntity<List<Movie>> FindAllMovies() {
         for(var movie : movieService.findAllMovies()) {
-            System.out.println(movie);
+            //System.out.println(movie);
         }
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
     }

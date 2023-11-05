@@ -20,7 +20,9 @@ public class CommentController {
     @PostMapping("add")
     public ResponseEntity<Comment> addComment(@RequestBody CommentDTO commentDTO){
         Comment comment = new Comment();
-        commentService.addComment(commentDTO.getComment(), commentDTO.getUserId(), commentDTO.getMovieId());
+        System.out.println(commentDTO.getMovieTitle());
+        commentService.addComment(comment,commentDTO.getComment(), commentDTO.getUserId(),commentDTO.getUserName(),commentDTO.getMovieId());
         return new ResponseEntity<>(comment, HttpStatus.OK);
     }
+
 }

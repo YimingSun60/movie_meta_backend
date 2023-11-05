@@ -25,14 +25,14 @@ public class MovieService {
         return movieRepo.findAll();
     }
 
-    public List<Movie> findMovieById(String id) {
-
+    public Movie findMovieById(String id) {
+        System.out.println("id: " + id);
         Movie movie = movieRepo.findMovieById(id);
 
         if (movie == null) {
             return null;
         }
-        return List.of(movie);
+        return movie;
     }
 
 }

@@ -1,9 +1,11 @@
 package com.ysun60.moviemeta.subpackages.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
@@ -15,11 +17,13 @@ public class Comment {
     private String id;
     private String comment;
 
-    @ManyToOne
-    @JoinTable(name = "user_id")
-    private User user;
 
-    @ManyToOne
-    @JoinTable(name = "movie_id")
+    private long userid;
+
+    private String username;
+
+    @JsonIgnore
     private Movie movie;
+
+
 }
