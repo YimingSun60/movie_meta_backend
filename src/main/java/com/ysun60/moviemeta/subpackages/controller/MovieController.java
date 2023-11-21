@@ -1,6 +1,8 @@
 package com.ysun60.moviemeta.subpackages.controller;
 
+import com.ysun60.moviemeta.subpackages.dto.MovieCollectionDTO;
 import com.ysun60.moviemeta.subpackages.entity.Movie;
+import com.ysun60.moviemeta.subpackages.entity.User;
 import com.ysun60.moviemeta.subpackages.service.MovieService;
 import com.ysun60.moviemeta.subpackages.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,7 @@ public class MovieController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping("/public/search")
     public ResponseEntity<List<Movie>> findMovieByTitle(@RequestParam String title) {
         List<Movie> movies = movieService.findMovieByTitle(title);
@@ -57,6 +60,18 @@ public class MovieController {
             //System.out.println(movie);
         }
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
+    }
+
+    @PostMapping("/public/collection_add")
+    public ResponseEntity<Void> AddMovieCollection(@RequestBody MovieCollectionDTO movieCollectionDTO) {
+        userService.addMovieToWatchList(movieCollectionDTO.getUserId(), movieCollectionDTO.getMovieId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping("/public/collection_remove")
+    public ResponseEntity<Void> RemovieMovieCollection(@RequestBody MovieCollectionDTO movieCollectionDTO) {
+        userService.removeMoviefromWatchList(movieCollectionDTO.getUserId(), movieCollectionDTO.getMovieId());
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 //    @GetMapping("/public/user/login")

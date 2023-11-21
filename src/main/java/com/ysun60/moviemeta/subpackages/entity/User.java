@@ -24,6 +24,12 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Getter
+    @ElementCollection(targetClass = String.class)
+    @CollectionTable(name = "user_collected_movies", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "movie_id")
+    private List<String> collectedMovieIds;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "user_role",
@@ -31,4 +37,25 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName = "id")}
     )
     private List<Role> roles = new ArrayList<>();
+
+    public void addMovieToWatchList(String movieId) {
+        if (this.collectedMovieIds == null) {
+            this.collectedMovieIds = new ArrayList<>();
+        }
+        if(!collectedMovieIds.contains(movieId)) {
+            this.collectedMovieIds.add(movieId);
+        }
+    }
+
+    public void removeMovieFromWatchList(String movieId) {
+        if (this.collectedMovieIds == null) {
+            this.collectedMovieIds = new ArrayList<>();
+        }
+        if(collectedMovieIds.contains(movieId)) {
+            this.collectedMovieIds.remove(movieId);
+        }
+    }
+
+
+
 }

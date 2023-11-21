@@ -7,6 +7,8 @@ import com.ysun60.moviemeta.subpackages.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
@@ -48,5 +50,29 @@ public class UserService {
         userDTO.setId(user.getId());
         userDTO.setUsername(user.getUsername());
         return userDTO;
+    }
+
+    public void addMovieToWatchList(long userId, String movieId) {
+        User user = userRepo.findUserById(userId);
+        if(user != null) {
+            user.addMovieToWatchList(movieId);
+            userRepo.save(user);
+        }
+
+    }
+
+    public void removeMoviefromWatchList(long userId, String movieId){
+        User user = userRepo.findUserById(userId);
+        if(user != null) {
+            user.removeMovieFromWatchList(movieId);
+            userRepo.save(user);
+        }
+    }
+    public List<String> getWatchList(long userId) {
+        User user = userRepo.findUserById(userId);
+        if(user != null) {
+            return user.getCollectedMovieIds();
+        }
+        return null;
     }
 }
