@@ -62,16 +62,27 @@ public class MovieController {
         return new ResponseEntity<>(movieService.findAllMovies(), HttpStatus.OK);
     }
 
-    @PostMapping("/public/collection_add")
+    @PostMapping("/collection_add")
     public ResponseEntity<Void> AddMovieCollection(@RequestBody MovieCollectionDTO movieCollectionDTO) {
         userService.addMovieToWatchList(movieCollectionDTO.getUserId(), movieCollectionDTO.getMovieId());
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/public/collection_remove")
+    @PostMapping("/collection_remove")
     public ResponseEntity<Void> RemovieMovieCollection(@RequestBody MovieCollectionDTO movieCollectionDTO) {
         userService.removeMoviefromWatchList(movieCollectionDTO.getUserId(), movieCollectionDTO.getMovieId());
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/collection/{id}")
+    public ResponseEntity<List<Movie>> FindMovieCollection(@PathVariable long id) {
+        User user = userService.findUserById(id);
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        List<String> movieIds = user.getCollectedMovieIds();
+        List<Movie> movies = movieService.findMovieByIds(movieIds);
+        return new ResponseEntity<>(movies,HttpStatus.OK);
     }
 
 //    @GetMapping("/public/user/login")

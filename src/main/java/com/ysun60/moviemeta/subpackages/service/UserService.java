@@ -22,12 +22,16 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public LoginDTO findUserById(long id) {
+    public LoginDTO findLoginDTOById(long id) {
         User user = userRepo.findById(id).orElse(null);
         LoginDTO loginDTO = new LoginDTO();
         loginDTO.setId(user.getId());
         loginDTO.setUsername(user.getUsername());
         return loginDTO;
+    }
+
+    public User findUserById(long id) {
+        return userRepo.findUserById(id);
     }
 
     public LoginDTO findUserByUserName(String username, String password) {

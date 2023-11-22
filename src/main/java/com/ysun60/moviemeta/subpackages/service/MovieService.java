@@ -35,4 +35,7 @@ public class MovieService {
         return movie;
     }
 
+    public List<Movie> findMovieByIds(List<String> movieIds) {
+        return movieRepo.findMovieByIdIn(movieIds);
+    }
 }
