@@ -40,6 +40,6 @@ class MovieControllerTest {
 
     @BeforeEach
     public void setup() {
-        System.out.println("movieService = " + movieRepo);
+        //System.out.println("movieService = " + movieRepo);
     }
 }

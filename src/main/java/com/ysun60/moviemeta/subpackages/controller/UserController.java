@@ -22,10 +22,10 @@ public class UserController {
         try {
             UserDTO userDTO =  userService.findUserDTOById(id);
             userDTO = commentService.fillCommentList(userDTO);
-            System.out.println(userDTO);
+            //System.out.println(userDTO);
             return new ResponseEntity<>(userDTO, org.springframework.http.HttpStatus.OK);
         } catch (Exception e) {
-            System.out.println(e);
+            //System.out.println(e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
