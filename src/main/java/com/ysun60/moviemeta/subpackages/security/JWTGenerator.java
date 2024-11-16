@@ -25,13 +25,14 @@ public class JWTGenerator {
     public String generateToken(Authentication authentication){
         username = authentication.getName();
         Date currentDate = new Date();
-        Date expiryDate = new Date(currentDate.getTime() + JWTexpiryTime);
+        Date expiryDate = new Date(currentDate.getTime()+JWTexpiryTime*3600*24);
 
 
         return Jwts.builder()
                 .setIssuer("MovieMeta")
                 .setSubject(username)
                 .setIssuedAt(currentDate)
+                .setExpiration(expiryDate)
                 //.signWith(SignatureAlgorithm.HS256, key)
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
