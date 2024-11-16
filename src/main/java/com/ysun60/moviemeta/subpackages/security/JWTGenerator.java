@@ -15,6 +15,9 @@ import java.util.Date;
 
 import static com.ysun60.moviemeta.subpackages.security.SecurityConstants.JWTexpiryTime;
 import static com.ysun60.moviemeta.subpackages.security.SecurityConstants.JwtSecret;
+// It is a vulnerable implementation
+// key is not stored securely
+// key is not rotated and generated every time the application starts
 @Component
 public class JWTGenerator {
     private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS512);

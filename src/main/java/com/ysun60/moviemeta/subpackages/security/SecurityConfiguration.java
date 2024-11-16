@@ -49,7 +49,6 @@ public class SecurityConfiguration {
                 .requestMatchers("/public/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-
                 .httpBasic(withDefaults());
 //                .formLogin(withDefaults())
 //                .logout(withDefaults());
